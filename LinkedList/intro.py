@@ -37,19 +37,51 @@ class LinkedList:
         temp.next = new_node
 
     def delete_node(self, key):
-        new_node = Node(key)
-        if self.head is None:
-            return
+        if self.head == key:
+            self.head = None
         temp = self.head
         previous = temp
         while temp:
             if temp.data == key:
                 previous.next = temp.next
+                break
             previous = temp
             temp = temp.next
 
+    def delete_node_position(self, position):
+        if position == 0:
+            self.head = self.head.next
+            return
+        temp = self.head.next
+        i = 1
+        previous = self.head
+        while i <= position and temp:
+            if i == position:
+                previous.next = temp.next
+                break
+            previous = temp
+            temp = temp.next
+            i += 1
 
-# Code execution starts here
+    def count_items_in_l_list(self):
+        temp = self.head
+        i = 0
+        while temp:
+            i += 1
+            temp = temp.next
+        return i
+
+    # def count_recursively(self):
+    #     if self.head
+
+    def search_recursive(self, item, head):
+        if head is None:
+            return None
+        if head.data == item:
+            return True
+        return self.search_recursive(item, head.next)
+
+
 if __name__ == '__main__':
     # Start with the empty list
     l_list = LinkedList()
@@ -61,5 +93,6 @@ if __name__ == '__main__':
     second.next = third
 
     l_list.print_list()
-    l_list.insert_after(second, 7)
+    print("\n\n\n")
+    print(l_list.count_items_in_l_list())
     l_list.print_list()
