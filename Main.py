@@ -10,6 +10,10 @@ class Solution:
                 return [complement, i]
             items[value] = i
 
+def find_minimum(num):
+    return sorted(num)[0]
 
-obj = Solution()
-print(obj.twoSum([2, 7, 7, 11, 15], 9))
+if __name__ == '__main__':
+    print(find_minimum([9, 2, 3, 6]))
+# obj = Solution()
+# print(obj.twoSum([2, 7, 7, 11, 15], 9))
